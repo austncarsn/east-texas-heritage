@@ -1,11 +1,29 @@
+# East Texas Heritage Archive
 
-  # Responsive Homepage Layout
+A modern, interactive digital archive preserving the stories, history, and heritage of East Texas communities.
 
-  This is a code bundle for Responsive Homepage Layout. The original project is available at https://www.figma.com/design/LoJdHfWfWQe2hoVhESk2ud/Responsive-Homepage-Layout.
+## Features
 
-  ## Running the code
+- 🗺️ Interactive map of East Texas communities
+- 📚 Historical timeline from indigenous peoples to modern day
+- 🏛️ Detailed community profiles with architecture and notable people
+- 🎨 Clean, accessible design with dark forest green theme
+- ⚡ Built with React, TypeScript, and Vite
+- 🎯 Fully responsive and mobile-friendly
 
-  Run `npm i` to install the dependencies.
+## Running the Project
 
-  Run `npm run dev` to start the development server.
-  
+Install dependencies:
+```bash
+npm install
+```
+
+Start the development server:
+```bash
+npm run dev
+```
+
+Build for production:
+```bash
+npm run build
+```
