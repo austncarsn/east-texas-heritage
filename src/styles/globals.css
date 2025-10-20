@@ -1,0 +1,223 @@
+/* stylelint-disable at-rule-no-unknown */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+
+/* Windsor Font - Using a web-safe serif alternative that closely matches Windsor */
+@font-face {
+  font-family: 'Windsor';
+  src: local('Goudy Old Style'), local('Palatino Linotype'), local('Georgia');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Tailwind CSS v4 custom variant syntax */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* East Texas Heritage Color Tokens */
+  --background: #F9F6EF;
+  --background-subtle: #F3EFE6;
+  --background-overlay: rgba(0, 0, 0, 0.5);
+  --surface: #FFFFFF;
+  --surface-muted: #F3F2EC;
+  --foreground: #1C1C1C;
+  --foreground-muted: #494949;
+  --foreground-subtle: #6B6B6B;
+  --primary: #182D09;
+  --primary-hover: #0f1a05;
+  --secondary: #182D09;
+  --secondary-hover: #0f1a05;
+  --divider: rgba(0, 0, 0, 0.12);
+  --timeline-track: #a1d9a1;
+  --timeline-node: #182D09;
+  --timeline-active: #4c8a4c;
+  --document-border: rgba(0, 0, 0, 0.1);
+  --heritage-brown: #182D09;
+  
+  /* East Texas Modern Tokens */
+  --paper-warm: #FAF7F2;
+  --heritage-tan: #182D09;
+  --pine-green: #2F5233;
+  --pine-green-hover: #234019;
+  --brass-accent: #182D09;
+  --archival-shadow: 0px 1px 3px rgba(0, 0, 0, 0.06), inset 0px 1px 2px rgba(0, 0, 0, 0.03);
+  --archival-shadow-hover: 0px 3px 8px rgba(0, 0, 0, 0.1), inset 0px 1px 2px rgba(0, 0, 0, 0.03);
+  
+  /* Period Color Swatches */
+  --period-indigenous: #182D09;
+  --period-settlement: #182D09;
+  --period-civil-war: #182D09;
+  --period-reconstruction: #182D09;
+  --period-modern: #182D09;
+  
+  /* Typography Tokens */
+  --font-heading: 'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-body: 'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-ui: 'Satoshi', system-ui, -apple-system, sans-serif;
+  
+  --font-size-base: 18px;
+  --font-size-lg: 22px;
+  --font-size-xl: 28px;
+  --font-size-2xl: 38px;
+  --font-size-4xl: 64px;
+  
+  --line-height-snug: 110%;
+  --line-height-normal: 140%;
+  
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 500;
+  --font-weight-black: 500;
+  
+  /* UI Tokens */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  
+  --shadow-sm: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  
+  --ring: 2px solid rgba(107, 68, 35, 0.45);
+  
+  /* Layout Tokens */
+  --section-spacing: 64px;
+  --grid-margin: 72px;
+  --grid-gutter: 24px;
+  
+  /* Legacy compatibility for shadcn components */
+  --card: #FFFFFF;
+  --card-foreground: #1C1C1C;
+  --popover: #FFFFFF;
+  --popover-foreground: #1C1C1C;
+  --primary-foreground: #FFFFFF;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F3F2EC;
+  --muted-foreground: #6B6B6B;
+  --accent: #F3EFE6;
+  --accent-foreground: #1C1C1C;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #F3F2EC;
+  --switch-background: #cbced4;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+  }
+}
+
+/**
+ * East Texas Heritage Typography System
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-black);
+      line-height: var(--line-height-snug);
+      color: var(--foreground);
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-snug);
+      color: var(--foreground);
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-normal);
+      color: var(--foreground);
+    }
+
+    h4 {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-normal);
+      color: var(--foreground);
+    }
+
+    p {
+      font-family: var(--font-body);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-normal);
+      color: var(--foreground-muted);
+    }
+
+    label {
+      font-family: var(--font-ui);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-normal);
+    }
+
+    button {
+      font-family: var(--font-ui);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-normal);
+    }
+
+    input {
+      font-family: var(--font-body);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-normal);
+    }
+  }
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* Account for sticky header height */
+}
+
+/* Ensure all anchor targets have proper scroll offset */
+[id] {
+  scroll-margin-top: 96px;
+}
