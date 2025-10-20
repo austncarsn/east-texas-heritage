@@ -58,7 +58,7 @@ export function CommunityHero({ communityName, county, established, onBack }: Co
             </div>
             
             <h1 className="mb-3" style={{
-              fontFamily: 'Satoshi, system-ui, sans-serif',
+              fontFamily: 'var(--font-body)',
               fontSize: 'clamp(38px, 5vw, 64px)',
               fontWeight: 'normal',
               lineHeight: 'var(--line-height-snug)',

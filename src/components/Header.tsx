@@ -42,7 +42,7 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
               <h1 
                 className="tracking-tight leading-none"
                 style={{
-                  fontFamily: 'Satoshi, system-ui, sans-serif',
+                  fontFamily: 'var(--font-body)',
                   fontSize: '32px',
                   fontWeight: 'normal',
                   color: '#1A1A1A',

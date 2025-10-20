@@ -79,7 +79,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
 
           <h1 
             style={{
-              fontFamily: 'Satoshi, system-ui, sans-serif',
+                fontFamily: 'var(--font-body)',
               fontSize: '56px',
               fontWeight: 'normal',
               color: '#FFFFFF',

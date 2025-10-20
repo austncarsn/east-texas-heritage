@@ -84,7 +84,7 @@ export function Hero({
             <h1
               className="mb-8"
               style={{
-                fontFamily: "Satoshi, system-ui, sans-serif",
+                fontFamily: 'var(--font-body)',
                 fontSize: "clamp(42px, 5.5vw, 68px)",
                 fontWeight: "normal",
                 lineHeight: "1.1",

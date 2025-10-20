@@ -11,9 +11,9 @@ A comprehensive digital heritage archive system showcasing the rich history and 
 - **Heritage Brown**: #3D2817 (footer)
 
 ### Typography
-- **Headings**: Satoshi (Black, Bold)
-- **Body**: Inter (Regular, Semibold)
-- **UI/Labels**: Work Sans (Semibold)
+- **Headings**: IBM Plex Mono (Black, Bold)
+- **Body**: IBM Plex Mono (Regular, Semibold)
+- **UI/Labels**: IBM Plex Mono (Semibold)
 
 ### Layout
 - 12-column responsive grid

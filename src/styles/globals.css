@@ -1,5 +1,5 @@
 /* stylelint-disable at-rule-no-unknown */
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 
 /* Windsor Font - Using a web-safe serif alternative that closely matches Windsor */
 @font-face {
@@ -50,9 +50,9 @@
   --period-modern: #182D09;
   
   /* Typography Tokens */
-  --font-heading: 'Satoshi', system-ui, -apple-system, sans-serif;
-  --font-body: 'Satoshi', system-ui, -apple-system, sans-serif;
-  --font-ui: 'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-heading: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-body: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-ui: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   
   --font-size-base: 18px;
   --font-size-lg: 22px;
