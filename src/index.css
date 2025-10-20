@@ -1728,36 +1728,46 @@
 }
 
 :root {
-  --background: #f9f6ef;
-  --background-subtle: #f3efe6;
+  --brand: #7C8F82; /* primary brand */
+  --accent: #8A919A; /* lighter accent */
+  --bg-paper: #E7E3D9; /* warm paper background */
+  --bg-surface: #FFFFFF; /* surface panels */
+  --bg-dark: #4A4E57; /* dark surfaces / footer */
+  --text-primary: #111418; /* high-contrast text */
+  --text-muted: #6B6760; /* muted text */
+  --border: #A8A39B; /* neutral borders */
+
+  /* Legacy token mappings */
+  --background: var(--bg-paper);
+  --background-subtle: #F3EFE6;
   --background-overlay: #00000080;
-  --surface: #fff;
-  --surface-muted: #f3f2ec;
-  --foreground: #1c1c1c;
-  --foreground-muted: #494949;
-  --foreground-subtle: #6b6b6b;
-  --primary: #182D09;
-  --primary-hover: #0f1a05;
-  --secondary: #182D09;
-  --secondary-hover: #0f1a05;
-  --divider: #0000001f;
+  --surface: var(--bg-surface);
+  --surface-muted: #F3F2EC;
+  --foreground: var(--text-primary);
+  --foreground-muted: var(--text-muted);
+  --foreground-subtle: var(--text-muted);
+  --primary: var(--brand);
+  --primary-hover: #6a796f;
+  --secondary: var(--brand);
+  --secondary-hover: #6a796f;
+  --divider: var(--border);
   --timeline-track: #a1d9a1;
-  --timeline-node: #182D09;
-  --timeline-active: #4c8a4c;
-  --document-border: #0000001a;
-  --heritage-brown: #182D09;
+  --timeline-node: var(--brand);
+  --timeline-active: #556f5f;
+  --document-border: rgba(0, 0, 0, 0.1);
+  --heritage-brown: var(--brand);
   --paper-warm: #faf7f2;
-  --heritage-tan: #182D09;
+  --heritage-tan: var(--brand);
   --pine-green: #2f5233;
   --pine-green-hover: #234019;
-  --brass-accent: #182D09;
+  --brass-accent: var(--brand);
   --archival-shadow: 0px 1px 3px #0000000f, inset 0px 1px 2px #00000008;
   --archival-shadow-hover: 0px 3px 8px #0000001a, inset 0px 1px 2px #00000008;
-  --period-indigenous: #182D09;
-  --period-settlement: #182D09;
-  --period-civil-war: #182D09;
-  --period-reconstruction: #182D09;
-  --period-modern: #182D09;
+  --period-indigenous: var(--brand);
+  --period-settlement: var(--brand);
+  --period-civil-war: var(--brand);
+  --period-reconstruction: var(--brand);
+  --period-modern: var(--brand);
   --font-heading: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-body: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-ui: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;

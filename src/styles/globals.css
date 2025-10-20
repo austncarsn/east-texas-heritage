@@ -13,25 +13,35 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* East Texas Heritage Color Tokens */
-  --background: #F9F6EF;
+  /* Design System Color Tokens (brand update) */
+  --brand: #7C8F82; /* primary brand */
+  --accent: #8A919A; /* lighter accent */
+  --bg-paper: #E7E3D9; /* warm paper background */
+  --bg-surface: #FFFFFF; /* surface panels */
+  --bg-dark: #4A4E57; /* dark surfaces / footer */
+  --text-primary: #111418; /* high-contrast text */
+  --text-muted: #6B6760; /* muted text */
+  --border: #A8A39B; /* neutral borders */
+
+  /* Legacy token mappings (for compatibility) */
+  --background: var(--bg-paper);
   --background-subtle: #F3EFE6;
   --background-overlay: rgba(0, 0, 0, 0.5);
-  --surface: #FFFFFF;
+  --surface: var(--bg-surface);
   --surface-muted: #F3F2EC;
-  --foreground: #1C1C1C;
-  --foreground-muted: #494949;
-  --foreground-subtle: #6B6B6B;
-  --primary: #182D09;
-  --primary-hover: #0f1a05;
-  --secondary: #182D09;
-  --secondary-hover: #0f1a05;
-  --divider: rgba(0, 0, 0, 0.12);
+  --foreground: var(--text-primary);
+  --foreground-muted: var(--text-muted);
+  --foreground-subtle: var(--text-muted);
+  --primary: var(--brand);
+  --primary-hover: #6a796f;
+  --secondary: var(--brand);
+  --secondary-hover: #6a796f;
+  --divider: var(--border);
   --timeline-track: #a1d9a1;
-  --timeline-node: #182D09;
-  --timeline-active: #4c8a4c;
+  --timeline-node: var(--brand);
+  --timeline-active: #556f5f;
   --document-border: rgba(0, 0, 0, 0.1);
-  --heritage-brown: #182D09;
+  --heritage-brown: var(--brand);
   
   /* East Texas Modern Tokens */
   --paper-warm: #FAF7F2;
