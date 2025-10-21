@@ -53,7 +53,7 @@ export function TimelineNavigator({ onPeriodClick }: TimelineNavigatorProps) {
         borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
       }}
     >
-      <div className="mx-auto px-[72px] max-w-[1400px] py-8">
+  <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] py-6 sm:py-8">
         <div className="flex items-center gap-3 mb-6">
           <Clock size={20} style={{ color: '#4a6a22' }} />
           <h3

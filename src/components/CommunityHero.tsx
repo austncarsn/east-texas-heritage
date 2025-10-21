@@ -15,7 +15,7 @@ export function CommunityHero({ communityName, county, established, onBack }: Co
       paddingBottom: '48px',
       borderBottom: '1px solid var(--divider)',
     }}>
-      <div className="mx-auto px-[72px] max-w-[1400px]">
+  <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px]">
         {onBack && (
           <button
             onClick={onBack}

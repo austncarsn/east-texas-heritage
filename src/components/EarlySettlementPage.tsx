@@ -104,7 +104,7 @@ export function EarlySettlementPage({ onBack }: EarlySettlementPageProps) {
         backgroundColor: 'var(--surface)',
         borderBottom: '1px solid var(--divider)',
       }}>
-        <div className="mx-auto px-[72px] max-w-[1400px]">
+  <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px]">
           {onBack && (
             <button
               onClick={onBack}
@@ -162,7 +162,7 @@ export function EarlySettlementPage({ onBack }: EarlySettlementPageProps) {
         paddingTop: 'var(--section-spacing)',
         paddingBottom: 'var(--section-spacing)',
       }}>
-        <div className="mx-auto px-[72px] max-w-[1400px]">
+  <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px]">
           <div className="max-w-[900px]">
             <h2 className="mb-6" style={{
               fontFamily: 'var(--font-heading)',
