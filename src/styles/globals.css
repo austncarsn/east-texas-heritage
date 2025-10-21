@@ -9,22 +9,8 @@
   font-style: normal;
 }
 
-/* Satoshi is a commercial font — if the user has it installed locally, this will pick it up. 
-   For production, load via a self-hosted font or licensed provider and add proper formats. */
-@font-face {
-  font-family: 'Satoshi';
-  src: local('Satoshi'), local('Satoshi-Regular');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Satoshi';
-  src: local('Satoshi'), local('Satoshi-Bold');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Load Satoshi via Fontshare (ITF Free Font License - ITF-FFL) */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi:400,700&display=swap');
 
 /* Tailwind CSS v4 custom variant syntax */
 @custom-variant dark (&:is(.dark *));

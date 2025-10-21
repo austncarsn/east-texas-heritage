@@ -75,7 +75,7 @@ export function ReconstructionGrowthPage({ onBack }: ReconstructionGrowthPagePro
       {/* Hero Section */}
       <section style={{
         position: 'relative',
-        paddingTop: '120px',
+        paddingTop: 'var(--section-spacing)',
         paddingBottom: '80px',
         backgroundColor: 'var(--surface)',
         borderBottom: '1px solid var(--divider)',

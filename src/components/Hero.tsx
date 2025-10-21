@@ -25,7 +25,7 @@ export function Hero({
 
   return (
     <section
-      className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-[120px]"
+      className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-[var(--section-spacing)]"
       style={{
         backgroundColor: "var(--background-subtle)",
       }}
@@ -83,13 +83,13 @@ export function Hero({
               className="mb-8"
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: "clamp(42px, 5.5vw, 68px)",
+                fontSize: "clamp(32px, 6.5vw, 68px)",
                 fontWeight: "normal",
                 lineHeight: "1.1",
                 color: "#FFFFFF",
                 letterSpacing: "0.01em",
                 textShadow: "2px 2px 12px rgba(0, 0, 0, 0.5)",
-                maxWidth: '680px',
+                maxWidth: 'min(92vw, 680px)',
               }}
             >
               Preserving the Stories of Rural East Texas
@@ -115,7 +115,7 @@ export function Hero({
                 lineHeight: "1.7",
                 color: "rgba(245, 245, 245, 0.95)",
                 textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)",
-                maxWidth: '580px',
+                maxWidth: 'min(92vw, 580px)',
               }}
             >
               Discover the rich tapestry of communities, families, and heritage that shaped the landscape and culture of East Texas through centuries of resilience and tradition.
