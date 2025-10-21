@@ -9,6 +9,23 @@
   font-style: normal;
 }
 
+/* Satoshi is a commercial font — if the user has it installed locally, this will pick it up. 
+   For production, load via a self-hosted font or licensed provider and add proper formats. */
+@font-face {
+  font-family: 'Satoshi';
+  src: local('Satoshi'), local('Satoshi-Regular');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: local('Satoshi'), local('Satoshi-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Tailwind CSS v4 custom variant syntax */
 @custom-variant dark (&:is(.dark *));
 
@@ -60,9 +77,10 @@
   --period-modern: #182D09;
   
   /* Typography Tokens */
-  --font-heading: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-body: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-ui: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Use Satoshi as the primary font family site-wide; fall back to system sans */
+  --font-heading: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-body: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-ui: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   
   --font-size-base: 18px;
   --font-size-lg: 22px;
@@ -89,7 +107,9 @@
   --ring: 2px solid rgba(107, 68, 35, 0.45);
   
   /* Layout Tokens */
-  --section-spacing: 64px;
+  /* responsive section spacing: small on mobile, larger on desktop */
+  --section-spacing: clamp(40px, 6vw, 96px);
+  /* grid margin used for content padding; match Tailwind px sizes (4/6/12/72) via breakpoints */
   --grid-margin: 72px;
   --grid-gutter: 24px;
   
@@ -224,7 +244,8 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  scroll-padding-top: 96px; /* Account for sticky header height */
+  /* reduce sticky header offset on small screens */
+  scroll-padding-top: clamp(64px, 10vw, 96px);
 }
 
 /* Ensure all anchor targets have proper scroll offset */
