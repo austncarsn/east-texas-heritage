@@ -30,14 +30,14 @@ export function HeritageButton({
 
   const variants = {
     primary: {
-      backgroundColor: '#182D09',
-      color: '#FFFFFF',
+  backgroundColor: 'var(--primary)',
+  color: 'var(--primary-foreground)',
       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
     },
     secondary: {
       backgroundColor: 'rgba(24, 45, 9, 0.15)',
-      color: '#F5EFE6',
-      border: '2px solid #182D09',
+  color: 'var(--accent-foreground)',
+  border: '2px solid var(--primary)',
       backdropFilter: 'blur(8px)',
     },
     ghost: {

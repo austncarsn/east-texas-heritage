@@ -5,10 +5,9 @@ A comprehensive digital heritage archive system showcasing the rich history and 
 ## Design System
 
 ### Color Tokens
-- **Background**: #F9F6EF (warm paper)
-- **Primary**: #1E5128 (forest green)
-- **Secondary**: #A1723D (bronze/leather)
-- **Heritage Brown**: #3D2817 (footer)
+- Semantic tokens are defined in `src/styles/color-tokens.css`.
+- Key tokens: `--color-background-base`, `--color-surface`, `--color-text-primary`, `--color-text-muted`,
+  `--color-border`, `--color-accent-heritage`, `--color-accent-map`, `--color-critical`.
 
 ### Typography
 - **Headings**: IBM Plex Mono (Black, Bold)

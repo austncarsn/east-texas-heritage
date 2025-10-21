@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useCallback, memo } from 'react';
+import { useState, useRef, useMemo, useCallback, memo, useEffect } from 'react';
 import { ChevronRight, Clock, MapPin, Users, Tent, Calendar, Wheat, TreePine, Factory, School } from 'lucide-react';
 
 interface TimelinePeriod {
@@ -49,7 +49,7 @@ const PeriodButton = memo(({
           borderRadius: '0',
         }}
       >
-        <Icon size={16} style={{ color: '#FFFFFF' }} />
+  <Icon size={16} style={{ color: 'var(--primary-foreground)' }} />
       </div>
       <div className="text-left">
         <div style={{
@@ -93,6 +93,7 @@ const TimelineCard = memo(({
   onReadMore?: () => void;
 }) => {
   const Icon = config.icon;
+  const [isCollapsed, setIsCollapsed] = useState(false);
   
   return (
     <div 
@@ -131,7 +132,7 @@ const TimelineCard = memo(({
           />
         )}
         <div className="relative flex items-center justify-center h-full">
-          <Icon size={28} style={{ color: '#FFFFFF' }} />
+          <Icon size={28} style={{ color: 'var(--primary-foreground)' }} />
         </div>
       </button>
 
@@ -160,7 +161,7 @@ const TimelineCard = memo(({
               fontFamily: 'var(--font-ui)',
               fontSize: '12px',
               fontWeight: 'var(--font-weight-semibold)',
-              color: '#FFFFFF',
+              color: 'var(--primary-foreground)',
               letterSpacing: '0.05em',
               textTransform: 'uppercase',
             }}>
@@ -184,13 +185,14 @@ const TimelineCard = memo(({
           lineHeight: 'var(--line-height-normal)',
           color: 'var(--foreground-muted)',
           marginBottom: '16px',
+          display: isCollapsed ? 'none' : 'block',
         }}>
           {period.description}
         </p>
 
         {/* Highlights */}
         {period.highlights && period.highlights.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-4" style={{ display: isCollapsed ? 'none' : 'block' }}>
             <div style={{
               fontFamily: 'var(--font-ui)',
               fontSize: '12px',
@@ -237,7 +239,7 @@ const TimelineCard = memo(({
               fontFamily: 'var(--font-ui)',
               fontSize: '14px',
               fontWeight: 'var(--font-weight-semibold)',
-              color: '#FFFFFF',
+              color: 'var(--primary-foreground)',
               willChange: 'transform',
               borderRadius: '0',
             }}
@@ -252,6 +254,16 @@ const TimelineCard = memo(({
             <ChevronRight size={16} />
           </button>
         )}
+        {/* Mobile collapse toggle */}
+        <div className="sm:hidden mt-3">
+          <button
+            className="text-sm text-primary underline"
+            onClick={(e) => { e.stopPropagation(); setIsCollapsed(!isCollapsed); }}
+            aria-expanded={!isCollapsed}
+          >
+            {isCollapsed ? 'Show details' : 'Hide details'}
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -279,12 +291,11 @@ const HorizontalCard = memo(({
   
   return (
     <div
-      className="flex-shrink-0 snap-center"
-      style={{ width: '520px' }}
+      className="flex-shrink-0 snap-center w-[min(520px,92vw)] sm:w-[520px]"
       onMouseEnter={onMouseEnter}
     >
       <div
-        className={`card h-full p-8 transition-all duration-300 flex flex-col${isActive ? ' is-active' : ''}`}
+        className={`card h-full p-6 sm:p-8 transition-all duration-300 flex flex-col${isActive ? ' is-active' : ''}`}
         style={{
           backgroundColor: isActive ? config.lightBg : 'var(--surface)',
           minHeight: '450px',
@@ -304,7 +315,7 @@ const HorizontalCard = memo(({
               fontFamily: 'var(--font-ui)',
               fontSize: '11px',
               fontWeight: 'var(--font-weight-semibold)',
-              color: '#FFFFFF',
+              color: 'var(--primary-foreground)',
               letterSpacing: '0.05em',
               textTransform: 'uppercase',
             }}>
@@ -320,7 +331,7 @@ const HorizontalCard = memo(({
               borderRadius: '0',
             }}
           >
-            <Icon size={32} style={{ color: '#FFFFFF' }} />
+            <Icon size={32} style={{ color: 'var(--primary-foreground)' }} />
           </div>
         </div>
 
@@ -418,7 +429,14 @@ HorizontalCard.displayName = 'HorizontalCard';
 
 export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
   const [activePeriod, setActivePeriod] = useState(0);
-  const [viewMode, setViewMode] = useState<'vertical' | 'horizontal'>('vertical');
+  const [viewMode, setViewMode] = useState<'vertical' | 'horizontal'>(() => {
+    try {
+      const stored = localStorage.getItem('timeline:viewMode');
+      return (stored === 'horizontal' || stored === 'vertical') ? stored : 'vertical';
+    } catch (e) {
+      return 'vertical';
+    }
+  });
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Memoize period configuration to avoid recreating on each render
@@ -426,13 +444,13 @@ export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
     indigenous: {
       color: 'var(--period-indigenous)',
       icon: Tent,
-      bgGradient: 'linear-gradient(135deg, #182D09 0%, #2a4a12 100%)',
+  bgGradient: 'linear-gradient(135deg, var(--primary) 0%, #2a4a12 100%)',
       lightBg: 'rgba(24, 45, 9, 0.08)',
     },
     settlement: {
       color: 'var(--period-settlement)',
       icon: TreePine,
-      bgGradient: 'linear-gradient(135deg, #182D09 0%, #3a5a1a 100%)',
+  bgGradient: 'linear-gradient(135deg, var(--primary) 0%, #3a5a1a 100%)',
       lightBg: 'rgba(24, 45, 9, 0.08)',
     },
     'civil-war': {
@@ -444,13 +462,13 @@ export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
     reconstruction: {
       color: 'var(--period-reconstruction)',
       icon: Factory,
-      bgGradient: 'linear-gradient(135deg, #2a4a12 0%, #3a5a1a 100%)',
+  bgGradient: 'linear-gradient(135deg, #2a4a12 0%, #3a5a1a 100%)',
       lightBg: 'rgba(42, 74, 18, 0.08)',
     },
     modern: {
       color: 'var(--period-modern)',
       icon: School,
-      bgGradient: 'linear-gradient(135deg, #3a5a1a 0%, #4a6a22 100%)',
+  bgGradient: 'linear-gradient(135deg, #3a5a1a 0%, #4a6a22 100%)',
       lightBg: 'rgba(20, 35, 8, 0.08)',
     },
   }), []);
@@ -469,6 +487,56 @@ export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
       }
     }
   }, [viewMode]);
+
+  // Observe which horizontal card is in the center (for mobile swiping)
+  useEffect(() => {
+    if (!scrollContainerRef.current || viewMode !== 'horizontal') return;
+    const container = scrollContainerRef.current;
+    const cards = Array.from(container.children) as HTMLElement[];
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const idx = cards.indexOf(entry.target as HTMLElement);
+          if (idx >= 0) setActivePeriod(idx);
+        }
+      });
+    }, {
+      root: container,
+      threshold: 0.6,
+    });
+
+    cards.forEach((c) => observer.observe(c));
+    return () => observer.disconnect();
+  }, [viewMode, periods.length]);
+
+  // Keyboard navigation for scroller
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const handler = (e: KeyboardEvent) => {
+      if (viewMode !== 'horizontal') return;
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        scrollToCard(Math.min(activePeriod + 1, periods.length - 1));
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        scrollToCard(Math.max(activePeriod - 1, 0));
+      }
+    };
+    el.addEventListener('keydown', handler);
+    return () => el.removeEventListener('keydown', handler);
+  }, [activePeriod, scrollToCard, viewMode, periods.length]);
+
+  // Persist view mode to localStorage when changed
+  const setViewModeAndPersist = (mode: 'vertical' | 'horizontal') => {
+    setViewMode(mode);
+    try {
+      localStorage.setItem('timeline:viewMode', mode);
+    } catch (e) {
+      // ignore storage errors
+    }
+  };
 
   // Memoize active period config
   const activeConfig = useMemo(
@@ -518,7 +586,7 @@ export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
             }}
           >
             <button
-              onClick={() => setViewMode('vertical')}
+              onClick={() => setViewModeAndPersist('vertical')}
               className="px-4 py-2 transition-all duration-200"
               style={{
                 fontFamily: 'var(--font-ui)',
@@ -534,7 +602,7 @@ export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
               Vertical
             </button>
             <button
-              onClick={() => setViewMode('horizontal')}
+              onClick={() => setViewModeAndPersist('horizontal')}
               className="px-4 py-2 transition-all duration-200"
               style={{
                 fontFamily: 'var(--font-ui)',
@@ -629,13 +697,15 @@ export function EnhancedTimeline({ periods }: EnhancedTimelineProps) {
         // Horizontal Scrollable Timeline
         <div 
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory px-8"
+          className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory px-4 sm:px-8 touch-pan-x"
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: 'var(--secondary) var(--background-subtle)',
-            scrollPaddingLeft: '520px', // Full card width
-            scrollPaddingRight: '520px',
+            WebkitOverflowScrolling: 'touch',
           }}
+          role="list"
+          tabIndex={0}
+          aria-label="Timeline cards"
         >
           {periods.map((period, index) => {
             const config = periodConfig[period.period];

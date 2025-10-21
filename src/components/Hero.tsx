@@ -61,12 +61,12 @@ export function Hero({
             backdropFilter: 'blur(8px)',
           }}
         >
-          <Library size={16} style={{ color: '#F5EFE6' }} />
+    <Library size={16} style={{ color: 'var(--accent-foreground)' }} />
           <span style={{
             fontFamily: 'var(--font-ui)',
             fontSize: '12px',
             fontWeight: 'var(--font-weight-semibold)',
-            color: '#F5EFE6',
+            color: 'var(--accent-foreground)',
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
           }}>
@@ -86,7 +86,7 @@ export function Hero({
                 fontSize: "clamp(32px, 6.5vw, 68px)",
                 fontWeight: "normal",
                 lineHeight: "1.1",
-                color: "#FFFFFF",
+                color: "var(--primary-foreground)",
                 letterSpacing: "0.01em",
                 textShadow: "2px 2px 12px rgba(0, 0, 0, 0.5)",
                 maxWidth: 'min(92vw, 680px)',
@@ -101,7 +101,7 @@ export function Hero({
               style={{
                 width: '120px',
                 height: '4px',
-                background: 'linear-gradient(90deg, #182D09 0%, rgba(24, 45, 9, 0.4) 100%)',
+                background: 'linear-gradient(90deg, var(--primary) 0%, rgba(24, 45, 9, 0.4) 100%)',
                 borderRadius: '0',
               }}
             />
@@ -149,7 +149,7 @@ export function Hero({
                 <div className="text-2xl sm:text-3xl lg:text-[40px]" style={{
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 'var(--font-weight-black)',
-                  color: '#FFFFFF',
+                  color: 'var(--primary-foreground)',
                   marginBottom: '6px',
                   letterSpacing: '-0.02em',
                   lineHeight: '1',
@@ -170,7 +170,7 @@ export function Hero({
                 <div className="text-2xl sm:text-3xl lg:text-[40px]" style={{
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 'var(--font-weight-black)',
-                  color: '#FFFFFF',
+                  color: 'var(--primary-foreground)',
                   marginBottom: '6px',
                   letterSpacing: '-0.02em',
                   lineHeight: '1',
@@ -191,7 +191,7 @@ export function Hero({
                 <div className="text-2xl sm:text-3xl lg:text-[40px]" style={{
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 'var(--font-weight-black)',
-                  color: '#FFFFFF',
+                  color: 'var(--primary-foreground)',
                   marginBottom: '6px',
                   letterSpacing: '-0.02em',
                   lineHeight: '1',
@@ -226,12 +226,12 @@ export function Hero({
                 borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
               }}>
                 <div className="flex items-center gap-2 mb-2">
-                  <MapPin size={18} style={{ color: '#ffffffff' }} />
+                  <MapPin size={18} style={{ color: 'var(--primary-foreground)' }} />
                   <h3 style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: '13px',
                     fontWeight: 'var(--font-weight-bold)',
-                    color: '#d8d8d8ff',
+                    color: 'var(--muted-foreground)',
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                   }}>
@@ -278,7 +278,7 @@ export function Hero({
                           fontFamily: 'var(--font-heading)',
                           fontSize: '15px',
                           fontWeight: 'var(--font-weight-semibold)',
-                          color: '#FFFFFF',
+                          color: 'var(--primary-foreground)',
                           marginBottom: '2px',
                           letterSpacing: '0.01em',
                         }}>
@@ -296,7 +296,7 @@ export function Hero({
                       <ChevronRight 
                         size={16} 
                         className="opacity-0 group-hover:opacity-100 transition-opacity" 
-                        style={{ color: '#182D09' }} 
+                        style={{ color: 'var(--primary)' }} 
                       />
                     </div>
                   </button>
@@ -312,15 +312,15 @@ export function Hero({
                   fontFamily: 'var(--font-ui)',
                   fontSize: '13px',
                   fontWeight: 'var(--font-weight-semibold)',
-                  color: '#182D09',
+                  color: 'var(--primary)',
                   letterSpacing: '0.03em',
                   textTransform: 'uppercase',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.color = 'var(--primary-foreground)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#182D09';
+                  e.currentTarget.style.color = 'var(--primary)';
                 }}
               >
                 View on Map →

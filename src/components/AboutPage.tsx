@@ -27,7 +27,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
           }}
           aria-label="Back to home"
         >
-          <ArrowLeft size={24} style={{ color: '#FFFFFF' }} />
+          <ArrowLeft size={24} style={{ color: 'var(--primary-foreground)' }} />
         </button>
 
         <div className="absolute inset-0 opacity-10">
@@ -61,7 +61,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 backgroundColor: 'var(--secondary)',
               }}
             >
-              <Library size={32} style={{ color: '#FFFFFF' }} />
+              <Library size={32} style={{ color: 'var(--primary-foreground)' }} />
             </div>
             <div 
               style={{
@@ -82,7 +82,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 fontFamily: 'var(--font-body)',
               fontSize: '56px',
               fontWeight: 'normal',
-              color: '#FFFFFF',
+              color: 'var(--primary-foreground)',
               marginBottom: '24px',
               lineHeight: '1.1',
               letterSpacing: '0.01em',
@@ -129,7 +129,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 backgroundColor: 'var(--primary)',
               }}
             >
-              <Heart size={28} style={{ color: '#FFFFFF' }} />
+              <Heart size={28} style={{ color: 'var(--primary-foreground)' }} />
             </div>
             <div>
               <h2 
@@ -173,7 +173,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 backgroundColor: 'var(--period-settlement)',
               }}
             >
-              <Library size={24} style={{ color: '#FFFFFF' }} />
+              <Library size={24} style={{ color: 'var(--primary-foreground)' }} />
             </div>
             <h3 
               style={{
@@ -212,7 +212,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 backgroundColor: 'var(--period-reconstruction)',
               }}
             >
-              <Users size={24} style={{ color: '#FFFFFF' }} />
+              <Users size={24} style={{ color: 'var(--primary-foreground)' }} />
             </div>
             <h3 
               style={{
@@ -251,7 +251,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 backgroundColor: 'var(--period-modern)',
               }}
             >
-              <BookOpen size={24} style={{ color: '#FFFFFF' }} />
+              <BookOpen size={24} style={{ color: 'var(--primary-foreground)' }} />
             </div>
             <h3 
               style={{
@@ -359,7 +359,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
               backgroundColor: 'var(--secondary)',
             }}
           >
-            <Library size={36} style={{ color: '#FFFFFF' }} />
+            <Library size={36} style={{ color: 'var(--primary-foreground)' }} />
           </div>
 
           <h2 

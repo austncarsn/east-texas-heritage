@@ -7,18 +7,18 @@ interface FooterProps {
 export function Footer({ onNavigate }: FooterProps = {}) {
   return (
     <footer 
-      className="relative overflow-hidden"
+      className="relative overflow-hidden pt-8 sm:pt-10 lg:pt-16 lg:pb-12"
       style={{
-        backgroundColor: '#1A1A1A',
-        color: '#FFFFFF',
+  backgroundColor: 'var(--bg-dark)',
+  color: 'var(--primary-foreground)',
       }}
     >
 
       {/* Main Content */}
       <div className="relative z-10">
         {/* Top Section - Editorial Grid */}
-        <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16">
-          <div className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-[24px]">
+        <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] py-6 sm:py-8">
+          <div className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
             {/* Column 1 - Archive Identity (spans 5 columns) */}
             <div className="col-span-12 lg:col-span-5">
               <div className="mb-8">
@@ -26,7 +26,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                   fontFamily: 'var(--font-heading)',
                   fontSize: '32px',
                   fontWeight: 'var(--font-weight-bold)',
-                  color: '#FFFFFF',
+                  color: 'var(--primary-foreground)',
                   lineHeight: '1.2',
                   letterSpacing: '-0.02em',
                   marginBottom: '16px',
@@ -36,7 +36,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                 <div style={{
                   width: '64px',
                   height: '2px',
-                  backgroundColor: '#182D09',
+                  backgroundColor: 'var(--primary)',
                   marginBottom: '24px',
                 }} />
               </div>
@@ -45,24 +45,24 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                 fontFamily: 'var(--font-body)',
                 fontSize: '16px',
                 lineHeight: '1.7',
-                color: '#E5E5E5',
+                color: 'var(--muted-foreground)',
                 maxWidth: '480px',
-                marginBottom: '32px',
+                marginBottom: '24px',
               }}>
                 An independent research initiative preserving the rich tapestry of rural East Texas through meticulous archival work, oral histories, and collaborative storytelling. We honor the voices of generations past while building a foundation for future understanding.
               </p>
 
               {/* Mission Statement */}
               <div style={{
-                borderLeft: '3px solid #182D09',
-                paddingLeft: '20px',
-                marginBottom: '32px',
+                borderLeft: '3px solid var(--primary)',
+                paddingLeft: '16px',
+                marginBottom: '24px',
               }}>
-                <p style={{
+                  <p style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: '14px',
                   lineHeight: '1.6',
-                  color: '#B8B8B8',
+                    color: 'var(--muted-foreground)',
                   fontStyle: 'italic',
                   maxWidth: '400px',
                 }}>
@@ -72,12 +72,12 @@ export function Footer({ onNavigate }: FooterProps = {}) {
             </div>
 
             {/* Column 2 - Navigation (spans 3 columns) */}
-            <div className="col-span-6 lg:col-span-3 lg:col-start-7">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-3 lg:col-start-7">
               <h3 style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: '11px',
                 fontWeight: 'var(--font-weight-semibold)',
-                color: '#999999',
+                color: 'var(--foreground-muted)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
                 marginBottom: '20px',
@@ -100,7 +100,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                         style={{
                           fontFamily: 'var(--font-body)',
                           fontSize: '15px',
-                          color: '#CCCCCC',
+                          color: 'var(--muted-foreground)',
                           textDecoration: 'none',
                         }}
                       >
@@ -115,12 +115,12 @@ export function Footer({ onNavigate }: FooterProps = {}) {
             </div>
 
             {/* Column 3 - Resources (spans 2 columns) */}
-            <div className="col-span-6 lg:col-span-2">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-2">
               <h3 style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: '11px',
                 fontWeight: 'var(--font-weight-semibold)',
-                color: '#999999',
+                color: 'var(--foreground-muted)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
                 marginBottom: '20px',
@@ -149,7 +149,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                         style={{
                           fontFamily: 'var(--font-body)',
                           fontSize: '15px',
-                          color: '#CCCCCC',
+                          color: 'var(--muted-foreground)',
                           textDecoration: 'none',
                           cursor: item.page ? 'pointer' : 'default',
                         }}
@@ -170,7 +170,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                 fontFamily: 'var(--font-ui)',
                 fontSize: '11px',
                 fontWeight: 'var(--font-weight-semibold)',
-                color: '#999999',
+                color: 'var(--foreground-muted)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
                 marginBottom: '20px',
@@ -185,7 +185,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                     label="Email"
                     size={16} 
                     style={{ 
-                      color: '#999999',
+                      color: 'var(--foreground-muted)',
                       marginTop: '2px',
                       flexShrink: 0,
                     }} 
@@ -196,7 +196,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                     style={{
                       fontFamily: 'var(--font-body)',
                       fontSize: '14px',
-                      color: '#CCCCCC',
+                      color: 'var(--muted-foreground)',
                       textDecoration: 'none',
                       lineHeight: '1.4',
                     }}
@@ -220,7 +220,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                   <span style={{
                     fontFamily: 'var(--font-body)',
                     fontSize: '14px',
-                    color: '#CCCCCC',
+                    color: 'var(--muted-foreground)',
                     lineHeight: '1.4',
                   }}>
                     East Texas<br />Region
@@ -240,14 +240,14 @@ export function Footer({ onNavigate }: FooterProps = {}) {
         </div>
 
         {/* Bottom Section - Meta Information */}
-        <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] py-6 sm:py-8">
+  <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] py-4 sm:py-6">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             {/* Copyright */}
             <div>
               <p style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: '13px',
-                color: '#888888',
+                color: 'var(--foreground-muted)',
                 lineHeight: '1.6',
               }}>
                 © 2025 East Texas Heritage Archive
@@ -266,7 +266,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontSize: '13px',
-                    color: '#888888',
+                    color: 'var(--foreground-muted)',
                     textDecoration: 'none',
                   }}
                 >
@@ -283,7 +283,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
             <p style={{
               fontFamily: 'var(--font-body)',
               fontSize: '12px',
-              color: '#666666',
+              color: 'var(--foreground-muted)',
               textAlign: 'center',
               letterSpacing: '0.02em',
             }}>

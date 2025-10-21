@@ -1728,46 +1728,31 @@
 }
 
 :root {
-  --brand: #7C8F82; /* primary brand */
-  --accent: #8A919A; /* lighter accent */
-  --bg-paper: #E7E3D9; /* warm paper background */
-  --bg-surface: #FFFFFF; /* surface panels */
-  --bg-dark: #4A4E57; /* dark surfaces / footer */
-  --text-primary: #111418; /* high-contrast text */
-  --text-muted: #6B6760; /* muted text */
-  --border: #A8A39B; /* neutral borders */
-
-  /* Legacy token mappings */
-  --background: var(--bg-paper);
-  --background-subtle: #F3EFE6;
-  --background-overlay: #00000080;
-  --surface: var(--bg-surface);
-  --surface-muted: #F3F2EC;
-  --foreground: var(--text-primary);
-  --foreground-muted: var(--text-muted);
-  --foreground-subtle: var(--text-muted);
-  --primary: var(--brand);
-  --primary-hover: #6a796f;
-  --secondary: var(--brand);
-  --secondary-hover: #6a796f;
-  --divider: var(--border);
-  --timeline-track: #a1d9a1;
-  --timeline-node: var(--brand);
-  --timeline-active: #556f5f;
+  /* Map legacy tokens to semantic color-tokens */
+  --background: var(--color-background-base);
+  --background-subtle: var(--surface-muted, var(--color-background-base));
+  --surface: var(--color-surface);
+  --surface-muted: var(--color-surface);
+  --foreground: var(--color-text-primary);
+  --foreground-muted: var(--color-text-muted);
+  --foreground-subtle: var(--color-text-muted);
+  --primary: var(--color-accent-heritage);
+  --primary-hover: var(--primary);
+  --secondary: var(--color-accent-heritage);
+  --secondary-hover: var(--primary-hover);
+  --divider: var(--color-border);
   --document-border: rgba(0, 0, 0, 0.1);
-  --heritage-brown: var(--brand);
-  --paper-warm: #faf7f2;
-  --heritage-tan: var(--brand);
-  --pine-green: #2f5233;
-  --pine-green-hover: #234019;
-  --brass-accent: var(--brand);
-  --archival-shadow: 0px 1px 3px #0000000f, inset 0px 1px 2px #00000008;
-  --archival-shadow-hover: 0px 3px 8px #0000001a, inset 0px 1px 2px #00000008;
-  --period-indigenous: var(--brand);
-  --period-settlement: var(--brand);
-  --period-civil-war: var(--brand);
-  --period-reconstruction: var(--brand);
-  --period-modern: var(--brand);
+  --heritage-brown: var(--primary);
+  --paper-warm: var(--color-background-base);
+  --heritage-tan: var(--primary);
+  --brass-accent: var(--primary);
+  --archival-shadow: 0px 1px 3px rgba(0,0,0,0.06), inset 0px 1px 2px rgba(0,0,0,0.03);
+  --archival-shadow-hover: 0px 3px 8px rgba(0,0,0,0.1), inset 0px 1px 2px rgba(0,0,0,0.03);
+  --period-indigenous: var(--primary);
+  --period-settlement: var(--primary);
+  --period-civil-war: var(--primary);
+  --period-reconstruction: var(--primary);
+  --period-modern: var(--primary);
   --font-heading: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   --font-body: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   --font-ui: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;

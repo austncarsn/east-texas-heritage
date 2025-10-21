@@ -1,5 +1,6 @@
 /* stylelint-disable at-rule-no-unknown */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+@import './color-tokens.css';
 
 /* Windsor Font - Using a web-safe serif alternative that closely matches Windsor */
 @font-face {
@@ -48,19 +49,19 @@
   
   /* East Texas Modern Tokens */
   --paper-warm: #FAF7F2;
-  --heritage-tan: #182D09;
+  --heritage-tan: var(--color-accent-heritage);
   --pine-green: #2F5233;
   --pine-green-hover: #234019;
-  --brass-accent: #182D09;
+  --brass-accent: var(--color-accent-heritage);
   --archival-shadow: 0px 1px 3px rgba(0, 0, 0, 0.06), inset 0px 1px 2px rgba(0, 0, 0, 0.03);
   --archival-shadow-hover: 0px 3px 8px rgba(0, 0, 0, 0.1), inset 0px 1px 2px rgba(0, 0, 0, 0.03);
   
   /* Period Color Swatches */
-  --period-indigenous: #182D09;
-  --period-settlement: #182D09;
-  --period-civil-war: #182D09;
-  --period-reconstruction: #182D09;
-  --period-modern: #182D09;
+  --period-indigenous: var(--color-accent-heritage);
+  --period-settlement: var(--color-accent-heritage);
+  --period-civil-war: var(--color-accent-heritage);
+  --period-reconstruction: var(--color-accent-heritage);
+  --period-modern: var(--color-accent-heritage);
   
   /* Typography Tokens */
   /* Use Satoshi as the primary font family site-wide; fall back to system sans */

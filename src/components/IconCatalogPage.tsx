@@ -232,7 +232,7 @@ export function IconCatalogPage({ onBack }: IconCatalogPageProps) {
                 padding: '8px 0',
               }}
             >
-              <Icon name="arrow-left" decorative size={16} />
+              <Icon name="ArrowLeft" decorative size={16} />
               Back to Home
             </button>
 
@@ -357,7 +357,7 @@ export function IconCatalogPage({ onBack }: IconCatalogPageProps) {
                         opacity: isCopied ? 1 : 0,
                       }}
                     >
-                      <Icon name="check" decorative size={16} style={{ color: 'var(--secondary)' }} />
+                      <Icon name="Check" decorative size={16} style={{ color: 'var(--secondary)' }} />
                     </div>
 
                     {/* Hover overlay with copy icon */}
@@ -368,13 +368,13 @@ export function IconCatalogPage({ onBack }: IconCatalogPageProps) {
                       }}
                     >
                       <div className="text-center">
-                        <Icon name="copy" decorative size={20} style={{ color: '#FFFFFF', margin: '0 auto 8px' }} />
+                        <Icon name="Copy" decorative size={20} style={{ color: 'var(--primary-foreground)', margin: '0 auto 8px' }} />
                         <div
                           style={{
                             fontFamily: 'var(--font-ui)',
                             fontSize: '11px',
                             fontWeight: 'var(--font-weight-semibold)',
-                            color: '#FFFFFF',
+                            color: 'var(--primary-foreground)',
                           }}
                         >
                           Click to Copy

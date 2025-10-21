@@ -37,7 +37,7 @@ export function CommunityCard({ name, county, established, description, onClick 
           left: 0,
           right: 0,
           height: '3px',
-          background: 'linear-gradient(to right, #182D09 0%, #4a6a22 50%, #182D09 100%)',
+          background: 'linear-gradient(to right, var(--primary) 0%, #4a6a22 50%, var(--primary) 100%)',
           opacity: 0.6,
         }}
       />
@@ -72,13 +72,13 @@ export function CommunityCard({ name, county, established, description, onClick 
               <MapPin 
                 size={12} 
                 strokeWidth={2}
-                style={{ color: '#182D09' }} 
+                style={{ color: 'var(--primary)' }} 
               />
               <span style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: '11px',
                 fontWeight: 'var(--font-weight-semibold)',
-                color: '#182D09',
+                color: 'var(--primary)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
               }}>
@@ -97,13 +97,13 @@ export function CommunityCard({ name, county, established, description, onClick 
               <Calendar 
                 size={12} 
                 strokeWidth={2}
-                style={{ color: '#182D09' }} 
+                style={{ color: 'var(--primary)' }} 
               />
               <span style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: '11px',
                 fontWeight: 'var(--font-weight-semibold)',
-                color: '#182D09',
+                color: 'var(--primary)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
               }}>
@@ -120,7 +120,7 @@ export function CommunityCard({ name, county, established, description, onClick 
               fontSize: '32px',
               fontWeight: 'var(--font-weight-bold)',
               lineHeight: '1.2',
-              color: '#182D09',
+              color: 'var(--primary)',
               marginBottom: '8px',
               letterSpacing: '-0.01em',
             }}
@@ -134,14 +134,14 @@ export function CommunityCard({ name, county, established, description, onClick 
               style={{
                 width: '40px',
                 height: '1px',
-                backgroundColor: '#182D09',
+                backgroundColor: 'var(--primary)',
                 opacity: 0.4,
               }}
             />
             <Landmark 
               size={14} 
               strokeWidth={1.5}
-              style={{ color: '#182D09', opacity: 0.5 }} 
+              style={{ color: 'var(--primary)', opacity: 0.5 }} 
             />
             <div 
               style={{
@@ -160,7 +160,7 @@ export function CommunityCard({ name, county, established, description, onClick 
             fontFamily: 'var(--font-body)',
             fontSize: '16px',
             lineHeight: '1.7',
-            color: '#3a5a1a',
+            color: 'var(--color-accent-map)',
             letterSpacing: '0.01em',
           }}
         >
@@ -180,7 +180,7 @@ export function CommunityCard({ name, county, established, description, onClick 
               fontFamily: 'var(--font-ui)',
               fontSize: '14px',
               fontWeight: 'var(--font-weight-semibold)',
-              color: '#182D09',
+              color: 'var(--primary)',
               letterSpacing: '0.02em',
               textTransform: 'uppercase',
             }}
@@ -203,7 +203,7 @@ export function CommunityCard({ name, county, established, description, onClick 
               <ArrowRight 
                 size={14} 
                 strokeWidth={2.5}
-                style={{ color: '#182D09' }}
+                style={{ color: 'var(--primary)' }}
               />
             </div>
           </div>
@@ -232,7 +232,7 @@ export function CommunityCard({ name, county, established, description, onClick 
           left: 0,
           width: '2px',
           height: '60px',
-          background: 'linear-gradient(to bottom, transparent, #4a6a22, transparent)',
+          background: 'linear-gradient(to bottom, transparent, var(--color-accent-map), transparent)',
           opacity: 0,
         }}
       />

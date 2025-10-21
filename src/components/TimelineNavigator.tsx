@@ -55,7 +55,7 @@ export function TimelineNavigator({ onPeriodClick }: TimelineNavigatorProps) {
     >
   <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] py-6 sm:py-8">
         <div className="flex items-center gap-3 mb-6">
-          <Clock size={20} style={{ color: '#4a6a22' }} />
+          <Clock size={20} style={{ color: 'var(--color-accent-map)' }} />
           <h3
             style={{
               fontFamily: 'var(--font-ui)',
@@ -88,7 +88,7 @@ export function TimelineNavigator({ onPeriodClick }: TimelineNavigatorProps) {
                 style={{
                   fontFamily: 'var(--font-ui)',
                   fontSize: '11px',
-                  color: '#4a6a22',
+                  color: 'var(--color-accent-map)',
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                 }}

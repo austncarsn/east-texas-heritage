@@ -14,7 +14,7 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
     <header 
       className="sticky top-0 z-50 border-b"
       style={{
-        backgroundColor: '#FAF8F5',
+  backgroundColor: 'var(--background)',
         borderColor: 'rgba(0, 0, 0, 0.1)',
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
       }}
@@ -34,7 +34,7 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
                 border: '1px solid rgba(24, 45, 9, 0.15)',
               }}
             >
-              <Icon name="Library" label="Heritage Library" size={18} style={{ color: '#182D09' }} />
+              <Icon name="Library" label="Heritage Library" size={18} style={{ color: 'var(--primary)' }} />
             </div>
 
             {/* Brand Name */}
@@ -88,7 +88,7 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
                 <span 
                   className="absolute -bottom-1 left-0 w-full h-[2px] bg-white opacity-100"
                   style={{
-                    backgroundColor: '#182D09',
+                    backgroundColor: 'var(--primary)',
                   }}
                 />
               </span>

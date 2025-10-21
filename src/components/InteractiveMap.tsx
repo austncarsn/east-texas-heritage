@@ -1,5 +1,5 @@
 import { Icon } from './Icon';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface Community {
   name: string;
@@ -51,6 +51,14 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
   const [hoveredCommunity, setHoveredCommunity] = useState<string | null>(null);
   const [selectedCommunity, setSelectedCommunity] = useState<string | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const draggingRef = useRef(false);
+  const dragStartRef = useRef({ x: 0, y: 0 });
+  const panStartRef = useRef({ x: 0, y: 0 });
+  const pinchStartDistRef = useRef<number | null>(null);
+  const initialZoomRef = useRef(1);
+  const [isSmall, setIsSmall] = useState(false);
 
   const handleCommunityClick = (community: Community) => {
     setSelectedCommunity(community.name);
@@ -272,7 +280,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
         latLonToSVG(33.16, -95.7),
         latLonToSVG(33.15, -94.3),
       ],
-      color: '#C0392B', 
+  color: 'var(--destructive)', 
       width: 3.5,
       type: 'interstate'
     },
@@ -285,7 +293,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
         latLonToSVG(33.157, -95.2),
         latLonToSVG(32.728, -94.941),
       ],
-      color: '#E67E22',
+  color: 'var(--destructive)',
       width: 2.5,
       type: 'us'
     },
@@ -297,7 +305,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
         latLonToSVG(32.15, -95.5),
         latLonToSVG(32.15, -94.3),
       ],
-      color: '#C0392B', 
+  color: 'var(--destructive)', 
       width: 3.5,
       type: 'interstate'
     },
@@ -309,7 +317,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
         latLonToSVG(33.3, -94.345),
         latLonToSVG(32.757, -94.345),
       ],
-      color: '#EB984E',
+  color: 'var(--destructive)',
       width: 2.5,
       type: 'us'
     },
@@ -369,6 +377,72 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
     },
   ];
 
+  // Responsive map height -- slightly taller on small screens
+  useEffect(() => {
+    const check = () => setIsSmall(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Helpers for touch/pinch
+  const distanceBetweenTouches = (t1: any, t2: any) => {
+    const dx = t2.clientX - t1.clientX;
+    const dy = t2.clientY - t1.clientY;
+    return Math.hypot(dx, dy);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      const t = e.touches[0];
+      draggingRef.current = true;
+      dragStartRef.current = { x: t.clientX, y: t.clientY };
+      panStartRef.current = { ...pan };
+    } else if (e.touches.length === 2) {
+      pinchStartDistRef.current = distanceBetweenTouches(e.touches[0] as any, e.touches[1] as any);
+      initialZoomRef.current = zoomLevel;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 1 && draggingRef.current) {
+      const t = e.touches[0];
+      const dx = t.clientX - dragStartRef.current.x;
+      const dy = t.clientY - dragStartRef.current.y;
+      setPan({ x: panStartRef.current.x + dx, y: panStartRef.current.y + dy });
+    } else if (e.touches.length === 2 && pinchStartDistRef.current) {
+      const newDist = distanceBetweenTouches(e.touches[0] as any, e.touches[1] as any);
+      const scale = newDist / pinchStartDistRef.current;
+      const newZoom = Math.max(0.5, Math.min(2, initialZoomRef.current * scale));
+      setZoomLevel(newZoom);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (e.touches.length === 0) {
+      draggingRef.current = false;
+      pinchStartDistRef.current = null;
+    }
+  };
+
+  // Mouse drag support
+  const handleMouseDown = (e: React.MouseEvent) => {
+    draggingRef.current = true;
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+    panStartRef.current = { ...pan };
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!draggingRef.current) return;
+    const dx = e.clientX - dragStartRef.current.x;
+    const dy = e.clientY - dragStartRef.current.y;
+    setPan({ x: panStartRef.current.x + dx, y: panStartRef.current.y + dy });
+  };
+
+  const handleMouseUp = () => {
+    draggingRef.current = false;
+  };
+
   return (
     <div 
       className="relative w-full"
@@ -427,7 +501,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                   style={{
                     width: '8px',
                     height: '8px',
-                    backgroundColor: '#5DADE2',
+                    backgroundColor: 'var(--color-accent-map)',
                   }}
                 />
                 <span style={{
@@ -443,7 +517,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                   style={{
                     width: '8px',
                     height: '8px',
-                    backgroundColor: '#E67E22',
+                    backgroundColor: 'var(--destructive)',
                   }}
                 />
                 <span style={{
@@ -515,13 +589,22 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
       </div>
 
       {/* Main Map Container */}
-      <div className="relative bg-white" style={{ paddingTop: '70%', overflow: 'hidden' }}>
+  <div className={`relative bg-white`} style={{ overflow: 'hidden', paddingTop: isSmall ? '85%' : '60%' }}>
         <div 
-          className="absolute inset-0 transition-transform duration-300"
+          ref={mapRef}
+          className="absolute inset-0 transition-transform duration-0"
           style={{
-            transform: `scale(${zoomLevel})`,
+            transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoomLevel})`,
             transformOrigin: 'center center',
+            touchAction: 'none',
           }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
         >
           <svg
             viewBox="0 0 1000 700"
@@ -529,7 +612,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
             style={{ opacity: 1 }}
           >
             {/* Clean base background */}
-            <rect width="1000" height="700" fill="#F8F6F0" />
+            <rect width="1000" height="700" fill="var(--color-background-base)" />
             
             {/* Subtle grid pattern for context */}
             <defs>
@@ -537,7 +620,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                 <path 
                   d="M 50 0 L 0 0 0 50" 
                   fill="none" 
-                  stroke="#E8E8E8" 
+                  stroke="var(--color-border)" 
                   strokeWidth="0.5"
                 />
               </pattern>
@@ -545,7 +628,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
             <rect width="1000" height="700" fill="url(#simple-grid)" opacity="0.2" />
 
             {/* Connecting lines between communities (historical routes) */}
-            <g stroke="#D35400" strokeWidth="1" strokeDasharray="3,3" opacity="0.3">
+            <g stroke="var(--color-critical)" strokeWidth="1" strokeDasharray="3,3" opacity="0.3">
               {communityGeoPositions.map((from, i) => 
                 communityGeoPositions.slice(i + 1).map((to, j) => {
                   // Only draw lines for neighboring towns
@@ -572,6 +655,8 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                 })
               )}
             </g>
+            {/* Decorative features should be ignored by assistive tech */}
+            <rect width="1000" height="700" fill="none" aria-hidden="true" />
           </svg>
 
           {/* Interactive Community Markers - Overlaid on SVG */}
@@ -595,6 +680,8 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                   onMouseEnter={() => setHoveredCommunity(community.name)}
                   onMouseLeave={() => setHoveredCommunity(null)}
                   onClick={() => handleCommunityClick(community)}
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCommunityClick(community); } }}
                 >
                   {/* Marker container with glow effect */}
                   <div className="relative">
@@ -778,6 +865,31 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
             })}
           </div>
         </div>
+
+        {/* Zoom & Reset Controls (overlay) */}
+        <div className="absolute right-3 top-3 flex flex-col gap-2 z-40">
+          <button
+            onClick={() => setZoomLevel(Math.min(2, zoomLevel + 0.25))}
+            aria-label="Zoom in"
+            className="rounded bg-surface p-2 border"
+          >
+            <Icon name="Plus" label="Zoom in" size={16} style={{ color: 'var(--foreground-muted)' }} />
+          </button>
+          <button
+            onClick={() => setZoomLevel(Math.max(0.5, zoomLevel - 0.25))}
+            aria-label="Zoom out"
+            className="rounded bg-surface p-2 border"
+          >
+            <Icon name="Minus" label="Zoom out" size={16} style={{ color: 'var(--foreground-muted)' }} />
+          </button>
+          <button
+            onClick={() => { setZoomLevel(1); setPan({ x: 0, y: 0 }); }}
+            aria-label="Reset map"
+            className="rounded bg-surface p-2 border"
+          >
+            <Icon name="Maximize2" label="Reset map" size={16} style={{ color: 'var(--foreground-muted)' }} />
+          </button>
+        </div>
       </div>
 
       {/* Comprehensive Map Legend */}
@@ -865,7 +977,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                   style={{
                     width: '28px',
                     height: '3px',
-                    backgroundColor: '#C0392B',
+                    backgroundColor: 'var(--destructive)',
                   }}
                 />
                 <span style={{
@@ -881,7 +993,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                   style={{
                     width: '28px',
                     height: '2.5px',
-                    backgroundColor: '#E67E22',
+                    backgroundColor: 'var(--destructive)',
                   }}
                 />
                 <span style={{
@@ -897,8 +1009,8 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                   style={{
                     width: '28px',
                     height: '1.5px',
-                    backgroundColor: '#D35400',
-                    borderTop: '1px dashed #D35400',
+                    backgroundColor: 'var(--destructive)',
+                    borderTop: '1px dashed var(--destructive)',
                   }}
                 />
                 <span style={{
@@ -932,7 +1044,7 @@ export function InteractiveMap({ communities }: InteractiveMapProps) {
                     width: '16px',
                     height: '16px',
                     backgroundColor: '#D2B48C',
-                    border: '1.5px solid #182D09',
+                    border: '1.5px solid var(--primary)',
                   }}
                 />
                 <span style={{

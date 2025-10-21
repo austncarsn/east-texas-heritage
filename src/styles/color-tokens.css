@@ -1,0 +1,48 @@
+/* Minimal, heritage-inspired color tokens — light and dark variants */
+:root {
+  /* Neutrals (60%) */
+  --color-background-base: #FAF7F0; /* warm paper cream */
+  --color-surface: #FFFFFF; /* surface panels */
+  --color-text-primary: #261814; /* deep charcoal/ink */
+  --color-text-muted: #6B6B6B; /* muted secondary text */
+  --color-border: #CFC6B8; /* subtle border */
+
+  /* Historical accents (30%) */
+  --color-accent-heritage: #8F4F2C; /* sepia, links/highlights */
+  --color-accent-map: #3B6B73; /* soft teal for maps/interaction */
+
+  /* Functional (10%) */
+  --color-critical: #A03A3A; /* muted destructive */
+}
+
+/* Dark mode variants preserve semantic roles while inverting neutrals */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-base: #12100E; /* near-black warm */
+    --color-surface: #181413; /* deep surface */
+    --color-text-primary: #F8F6F1; /* light cream text */
+    --color-text-muted: #D2CFC7; /* muted light */
+    --color-border: #2B2723; /* subtle divider */
+    --color-accent-heritage: #B67B4A; /* slightly lighter sepia on dark */
+    --color-accent-map: #6EA9AC; /* lighter teal for visibility */
+    --color-critical: #D16B6B; /* lighter critical */
+  }
+}
+
+/* Helper semantic aliases to simplify existing code mappings */
+:root {
+  --background: var(--color-background-base);
+  --surface: var(--color-surface);
+  --foreground: var(--color-text-primary);
+  --foreground-muted: var(--color-text-muted);
+  --divider: var(--color-border);
+  --primary: var(--color-accent-heritage);
+  --accent: var(--color-accent-map);
+  --destructive: var(--color-critical);
+}
+
+/* Usage examples (recommended)
+   body { background-color: var(--color-background-base); color: var(--color-text-primary) }
+   a { color: var(--color-accent-heritage) }
+   .map .active { color: var(--color-accent-map) }
+*/

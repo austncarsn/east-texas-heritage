@@ -1,0 +1,22 @@
+{
+  "name": "East Texas Heritage — Color Tokens",
+  "tokens": {
+    "color-background-base": { "value": "#FAF7F0", "description": "Warm paper background (light)" },
+    "color-surface": { "value": "#FFFFFF", "description": "Surface panels (light)" },
+    "color-text-primary": { "value": "#261814", "description": "Primary text (dark ink)" },
+    "color-text-muted": { "value": "#6B6B6B", "description": "Muted text" },
+    "color-border": { "value": "#CFC6B8", "description": "Subtle border" },
+    "color-accent-heritage": { "value": "#8F4F2C", "description": "Heritage sepia accent" },
+    "color-accent-map": { "value": "#3B6B73", "description": "Soft teal accent (maps)" },
+    "color-critical": { "value": "#A03A3A", "description": "Critical / destructive (muted red)" },
+
+    "dark-color-background-base": { "value": "#12100E", "description": "Background (dark)" },
+    "dark-color-surface": { "value": "#181413", "description": "Surface (dark)" },
+    "dark-color-text-primary": { "value": "#F8F6F1", "description": "Text (dark theme)" },
+    "dark-color-text-muted": { "value": "#D2CFC7", "description": "Muted (dark theme)" },
+    "dark-color-border": { "value": "#2B2723", "description": "Border (dark)" },
+    "dark-color-accent-heritage": { "value": "#B67B4A", "description": "Heritage sepia (dark)" },
+    "dark-color-accent-map": { "value": "#6EA9AC", "description": "Map accent (dark)" },
+    "dark-color-critical": { "value": "#D16B6B", "description": "Critical (dark)" }
+  }
+}
