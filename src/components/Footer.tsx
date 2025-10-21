@@ -17,8 +17,8 @@ export function Footer({ onNavigate }: FooterProps = {}) {
       {/* Main Content */}
       <div className="relative z-10">
         {/* Top Section - Editorial Grid */}
-        <div className="mx-auto px-[72px] max-w-[1400px] pt-20 pb-16">
-          <div className="grid grid-cols-12 gap-[24px]">
+        <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16">
+          <div className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-[24px]">
             {/* Column 1 - Archive Identity (spans 5 columns) */}
             <div className="col-span-12 lg:col-span-5">
               <div className="mb-8">
@@ -232,7 +232,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
         </div>
 
         {/* Divider */}
-        <div className="mx-auto px-[72px] max-w-[1400px]">
+        <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px]">
           <div style={{
             height: '1px',
             background: 'linear-gradient(to right, transparent, rgba(24, 45, 9, 0.3) 20%, rgba(24, 45, 9, 0.3) 80%, transparent)',
@@ -240,7 +240,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
         </div>
 
         {/* Bottom Section - Meta Information */}
-        <div className="mx-auto px-[72px] max-w-[1400px] py-8">
+        <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px] py-6 sm:py-8">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             {/* Copyright */}
             <div>
@@ -257,7 +257,7 @@ export function Footer({ onNavigate }: FooterProps = {}) {
             </div>
 
             {/* Legal Links */}
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
               {['Privacy Policy', 'Terms of Use', 'Image Attribution'].map((item, index) => (
                 <a
                   key={item}

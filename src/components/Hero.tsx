@@ -25,11 +25,9 @@ export function Hero({
 
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-[120px]"
       style={{
         backgroundColor: "var(--background-subtle)",
-        paddingTop: 120,
-        paddingBottom: 120,
       }}
     >
       {/* Background Image */}
@@ -52,10 +50,10 @@ export function Hero({
       </div>
 
       {/* Content */}
-      <div className="relative mx-auto px-[72px] max-w-[1400px]">
+      <div className="relative mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px]">
         {/* Badge/Tagline */}
         <div 
-          className="inline-flex items-center gap-2 px-4 py-2 mb-12"
+          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 mb-8 sm:mb-12"
           style={{
             backgroundColor: 'rgba(34, 55, 14, 0.25)',
             border: '1px solid rgba(34, 55, 14, 0.6)',
@@ -142,15 +140,14 @@ export function Hero({
 
             {/* Stats Section */}
             <div 
-              className="pt-8 border-t grid grid-cols-3 gap-8 max-w-[500px]"
+              className="pt-6 sm:pt-8 border-t grid grid-cols-3 gap-4 sm:gap-8 max-w-[500px]"
               style={{
                 borderColor: 'rgba(255, 255, 255, 0.15)',
               }}
             >
               <div>
-                <div style={{
+                <div className="text-2xl sm:text-3xl lg:text-[40px]" style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '40px',
                   fontWeight: 'var(--font-weight-black)',
                   color: '#FFFFFF',
                   marginBottom: '6px',
@@ -159,9 +156,8 @@ export function Hero({
                 }}>
                   7
                 </div>
-                <div style={{
+                <div className="text-[10px] sm:text-xs" style={{
                   fontFamily: 'var(--font-ui)',
-                  fontSize: '12px',
                   color: 'rgba(255, 255, 255, 0.7)',
                   letterSpacing: '0.05em',
                   textTransform: 'uppercase',
@@ -171,9 +167,8 @@ export function Hero({
               </div>
               
               <div>
-                <div style={{
+                <div className="text-2xl sm:text-3xl lg:text-[40px]" style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '40px',
                   fontWeight: 'var(--font-weight-black)',
                   color: '#FFFFFF',
                   marginBottom: '6px',
@@ -182,9 +177,8 @@ export function Hero({
                 }}>
                   5
                 </div>
-                <div style={{
+                <div className="text-[10px] sm:text-xs" style={{
                   fontFamily: 'var(--font-ui)',
-                  fontSize: '12px',
                   color: 'rgba(255, 255, 255, 0.7)',
                   letterSpacing: '0.05em',
                   textTransform: 'uppercase',
@@ -194,9 +188,8 @@ export function Hero({
               </div>
               
               <div>
-                <div style={{
+                <div className="text-2xl sm:text-3xl lg:text-[40px]" style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '40px',
                   fontWeight: 'var(--font-weight-black)',
                   color: '#FFFFFF',
                   marginBottom: '6px',
@@ -205,9 +198,8 @@ export function Hero({
                 }}>
                   47+
                 </div>
-                <div style={{
+                <div className="text-[10px] sm:text-xs" style={{
                   fontFamily: 'var(--font-ui)',
-                  fontSize: '12px',
                   color: 'rgba(255, 255, 255, 0.7)',
                   letterSpacing: '0.05em',
                   textTransform: 'uppercase',
@@ -221,7 +213,7 @@ export function Hero({
           {/* Right Column - Communities Panel (4 columns) */}
           <div className="lg:col-span-4">
             <div 
-              className="p-8 h-full"
+              className="p-6 sm:p-8 h-full"
               style={{
                 backgroundColor: 'rgba(135, 135, 135, 0.23)',
                 border: '1px solid rgba(34, 55, 14, 0.3)',

@@ -19,43 +19,41 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
       }}
     >
-      <div className="mx-auto px-[72px] max-w-[1400px]">
+      <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-[72px] max-w-[1400px]">
         {/* Main Navigation Bar */}
-        <div className="flex items-center justify-between" style={{ height: '96px' }}>
+        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24" style={{ minHeight: '64px' }}>
           {/* Logo & Brand */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 flex-1 min-w-0">
             {/* Archive Icon */}
             <div 
-              className="flex items-center justify-center"
+              className="flex items-center justify-center flex-shrink-0"
               style={{
-                width: '44px',
-                height: '44px',
+                width: '36px',
+                height: '36px',
                 backgroundColor: 'rgba(24, 45, 9, 0.08)',
                 border: '1px solid rgba(24, 45, 9, 0.15)',
               }}
             >
-              <Icon name="Library" label="Heritage Library" size={22} style={{ color: '#182D09' }} />
+              <Icon name="Library" label="Heritage Library" size={18} style={{ color: '#182D09' }} />
             </div>
 
             {/* Brand Name */}
-            <div>
+            <div className="min-w-0">
               <h1 
-                className="tracking-tight leading-none"
+                className="tracking-tight leading-tight truncate"
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: '32px',
+                  fontSize: 'clamp(14px, 3.5vw, 32px)',
                   fontWeight: 'normal',
                   color: '#1A1A1A',
                   letterSpacing: '-0.01em',
                   textTransform: 'uppercase',
-                  marginBottom: '2px',
                 }}
               >
                 East Texas Heritage
               </h1>
-              <p style={{
+              <p className="hidden md:block text-[9px] sm:text-[10px] lg:text-[11px] truncate" style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '11px',
                 color: 'rgba(26, 26, 26, 0.5)',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
@@ -66,7 +64,7 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
           </div>
           
           {/* Navigation Links */}
-          <nav className="flex items-center" style={{ gap: '48px' }}>
+          <nav className="hidden lg:flex items-center" style={{ gap: '48px' }}>
             <button 
               onClick={(e) => {
                 e.preventDefault();
@@ -245,6 +243,23 @@ export function Header({ onAboutClick, onSearchClick, onHomeClick, onTimelineCli
               </span>
             </button>
           </nav>
+
+          {/* Mobile Search Button */}
+          <button 
+            onClick={onSearchClick}
+            className="lg:hidden flex items-center justify-center flex-shrink-0"
+            aria-label="Search"
+            style={{
+              width: '40px',
+              height: '40px',
+              border: '1px solid rgba(26, 26, 26, 0.2)',
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+              minWidth: '40px',
+            }}
+          >
+            <Icon name="Search" label="Search" size={18} style={{ color: 'rgba(26, 26, 26, 0.6)' }} />
+          </button>
         </div>
       </div>
 
